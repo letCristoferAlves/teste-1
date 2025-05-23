@@ -15,6 +15,10 @@ import {
   ErrorText,
   TaskStatusConcluido,
   TaskStatusPendente,
+  InputWrapper,
+  InputField,
+  Label,
+  IconButton,
 } from "./styles";
 import LoadingModal from "../LoadingModal";
 
@@ -50,7 +54,7 @@ export default function Principal({ navigation }) {
   async function marcarConcluida(id) {
     setLoading(true);
     try {
-      await api.put(`/nota/${id}`, { status: "concluído"});
+      await api.put(`/nota/${id}`, { status: "concluído" });
       carregarTarefas();
     } catch (error) {
       console.error("Erro ao atualizar tarefa:", error);
@@ -65,7 +69,12 @@ export default function Principal({ navigation }) {
 
   return (
     <Container>
-      <Title>Minhas Tarefas de Hoje</Title>
+      <InputWrapper>
+       <IconButton>
+          <Icon name="search" size={18} color="#5D47B7" />
+        </IconButton>
+        <InputField placeholder="" />
+      </InputWrapper>
 
       {errorMessage !== "" && <ErrorText>{errorMessage}</ErrorText>}
 
@@ -76,13 +85,13 @@ export default function Principal({ navigation }) {
           <TaskItem onPress={() => marcarConcluida(item.id)}>
             <TaskText>{item.titulo}</TaskText>
             {
-            item.status === "concluído" ? 
-            (
-              <TaskStatusConcluido>{item.descricao}</TaskStatusConcluido>
-            ):
-            (
-              <TaskStatusPendente>{item.descricao}</TaskStatusPendente>
-            )}
+              item.status === "concluído" ?
+                (
+                  <TaskStatusConcluido>{item.descricao}</TaskStatusConcluido>
+                ) :
+                (
+                  <TaskStatusPendente>{item.descricao}</TaskStatusPendente>
+                )}
             <TaskStatus status={item.status}>
               {item.status === "concluído" ? "✅ Concluído" : "⌛ Pendente"}
             </TaskStatus>
@@ -94,13 +103,13 @@ export default function Principal({ navigation }) {
         <Button onPress={() => navigation.navigate("AdicionarTarefa")}>
           <ButtonText>Adicionar</ButtonText>
           <IconContainer>
-            <Icon name="plus-circle" size={24} color="#fff" />
+            <Icon name="plus-circle" size={24} color="#5D47B7" />
           </IconContainer>
         </Button>
         <Button onPress={carregarTarefas}>
           <ButtonText>Atualizar</ButtonText>
           <IconContainer>
-            <Icon name="refresh-ccw" size={24} color="#fff" />
+            <Icon name="refresh-ccw" size={24} color="#5D47B7" />
           </IconContainer>
         </Button>
       </ActionButtonsContainer>

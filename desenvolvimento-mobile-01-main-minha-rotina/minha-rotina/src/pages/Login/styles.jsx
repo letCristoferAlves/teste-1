@@ -61,7 +61,7 @@ export const IconButton = styled.TouchableOpacity`
 `;
 
 export const ButtonEnter = styled.TouchableOpacity`
-  background-color: ${({ theme }) => theme.colors.primary};
+  background-color: #CABEFD;
   padding: 14px;
   margin-top: 24px;
   border-radius: 8px;
@@ -69,7 +69,7 @@ export const ButtonEnter = styled.TouchableOpacity`
 `;
 
 export const ButtonText = styled.Text`
-  color: ${({ theme }) => theme.colors.articleBg};
+  color: #5D47B7;
   font-size: 16px;
   font-weight: bold;
 `;

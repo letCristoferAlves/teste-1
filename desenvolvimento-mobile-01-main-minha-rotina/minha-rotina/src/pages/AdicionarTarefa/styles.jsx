@@ -30,7 +30,7 @@ export const SuccessText = styled.Text`
 `;
 
 export const Button = styled.TouchableOpacity`
-  background-color: ${({ theme }) => theme.colors.primary || "#007BFF"};
+  background-color: #CABEFD;
   padding: 12px;
   border-radius: 8px;
   flex-direction: row;
@@ -40,7 +40,7 @@ export const Button = styled.TouchableOpacity`
 `;
 
 export const ButtonText = styled.Text`
-  color: #fff;
+  color: #5D47B7;
   font-size: 16px;
   margin-right: 8px;
 `;
